@@ -7,14 +7,14 @@ import java.util.TreeMap;
 import java.io.IOException;
 import java.io.FileWriter;
 
-class WriteSymptomToFile implements CanWritable {
+class WriteSymptomToFile implements ICanWritable {
 
     /**
      * The file variable named file.
      * <p>It can only be accessed from within this class.</p>
      */
-    //declare & initialize fil2, its output path and myMap
-    private File file2 ;
+
+    private File file2;
 
     /**
      * The TreeMap named myMap.
@@ -27,16 +27,13 @@ class WriteSymptomToFile implements CanWritable {
     /**
      * This is the parameterized constructor for file2.
      * <p>It constructs the value when the object is created.</p>
-     * @param file2
      *
-     * <p>The this keyword is a reference to the file object.
-     * It is an explicit constructor invocation that will allow
-     * use of the file object in another method.</p>
+     * @param file2 <p>The this keyword is a reference to the file object.
+     *              It is an explicit constructor invocation that will allow
+     *              use of the file object in another method.</p>
      */
 
-    //constructor to use this.file2 in another class
-    public WriteSymptomToFile(File file2)
-    {
+    public WriteSymptomToFile(File file2) {
         this.file2 = file2;
     }
 
@@ -47,13 +44,13 @@ class WriteSymptomToFile implements CanWritable {
      * <p>The BufferedWriter will write to the outputfile.</p>
      * <p>The BF is instanatiated with a FileWriter. The
      * code is wrapped in a try/catch to avoid errors on file.</p>
-     *
+     * <p>
      * The for Loop will set the writing.
      * <p> For each entry of String & Integer
      * from the myMap entry set, bf will write
      * each key and value; line after line.
      * </p>
-     *
+     * <p>
      * Then the stream is flushed, once the writing is done.
      * Finally, the stream is closed.
      *
@@ -64,7 +61,6 @@ class WriteSymptomToFile implements CanWritable {
 
         //initializing map & declare bufferedWriter which is null
         this.myMap = map;
-
         BufferedWriter bf = null;
 
         //initializing bufferedwriter to write on this.file2

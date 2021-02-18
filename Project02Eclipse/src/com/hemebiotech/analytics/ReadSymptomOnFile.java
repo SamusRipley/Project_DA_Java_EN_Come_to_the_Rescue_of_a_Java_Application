@@ -5,14 +5,14 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.TreeMap;
 
-class ReadSymptomOnFile implements CanReadable {
+class ReadSymptomOnFile implements ICanReadable {
 
     /**
      * The file variable named file.
      * <p>It can only be accessed from within this class.</p>
      */
-    //Declare & initialize file, path, TreeMap and constructor for this.file
-    private File file;
+
+    private File files;
 
     /**
      * The TreeMap named myMap.
@@ -25,15 +25,14 @@ class ReadSymptomOnFile implements CanReadable {
     /**
      * This is the parameterized constructor for file.
      * <p>It constructs the value when the object is created.</p>
-     * @param file
      *
-     * <p>The this keyword is a reference to the file object.
-     * It is an explicit constructor invocation that will allow
-     * use of the file object in another method.</p>
+     * @param file <p>The this keyword is a reference to the file object.
+     *             It is an explicit constructor invocation that will allow
+     *             use of the file object in another method.</p>
      */
 
-    public ReadSymptomOnFile(File file){
-        this.file = file;
+    public ReadSymptomOnFile(File file) {
+        this.files = file;
     }
 
     /**
@@ -41,24 +40,24 @@ class ReadSymptomOnFile implements CanReadable {
      * <p>The Scanner will read the file linked to the TreeMap myMap.
      * The Scanner is wrapped in try/catch to avoid errors about the file.
      * TreeMap will sort out and count words in the file.</p>
-     *
+     * <p>
      * Then it starts a while loop.
      * <p>As long as the scanner has a line to read,
      * it keeps doing the following actions:</p>
      * <ul>
-     *<li>Read the next line which is named m.</li>
+     * <li>Read the next line which is named m.</li>
      * <li>Split the line each time a designated
      * punctuation is met.</li>
      * </ul>
-     *
+     * <p>
      * With a for loop:
      * <p> As long as there is input, we increase the value.
      * The key which is a String, will be returned in upper cases</p>
-     *
+     * <p>
      * The if statement indicates:
      * <p>That if its length is 0, then set the key to 1.
      * If its length is 1 or above, then the key gets +1 value.</p>
-     *
+     * <p>
      * Then print the results of the TreeMap.
      * <p>The keySet() gives a view on all keys of the file.</p>
      * <p>The print method prints the entries and the keys.</p>
@@ -66,10 +65,9 @@ class ReadSymptomOnFile implements CanReadable {
 
     public void readDatas() {
         //call scanner set to null; create new instance of scanner & catch exception if needs
-
         Scanner sc = null;
         try {
-            sc = new Scanner(file);
+            sc = new Scanner(files);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -96,7 +94,6 @@ class ReadSymptomOnFile implements CanReadable {
                 }
             }
         }
-
         //about the results, print them in the console as "Symptom : Count"
         for (String entry : this.myMap.keySet()) {
             System.out.println(entry + " : " + this.myMap.get(entry));
@@ -106,11 +103,11 @@ class ReadSymptomOnFile implements CanReadable {
     /**
      * The data of the variable myMap is returned,
      * so it can be used in another class.
-     * @see WriteSymptomToFile
+     *
      * @return
+     * @see WriteSymptomToFile
      */
 
-    //return the data in variable myMap so it can be used in another class
     public TreeMap<String, Integer> getMyMap() {
         return myMap;
     }

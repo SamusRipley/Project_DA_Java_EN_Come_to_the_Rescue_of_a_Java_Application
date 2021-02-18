@@ -18,8 +18,9 @@ public class PropertiesService {
             e.printStackTrace();
         }
     }
+
     //returns the file with properties to use in another class
     public String getProperty(String key) {
         return this.appProps.getProperty(key);
     }
-    }
+}
