@@ -1,7 +1,6 @@
 package com.hemebiotech.analytics;
 
 import java.io.*;
-import java.util.Properties;
 /**
  * <b> AnalyticsCounter is the class containing "main" method.</b>
  * <p>
