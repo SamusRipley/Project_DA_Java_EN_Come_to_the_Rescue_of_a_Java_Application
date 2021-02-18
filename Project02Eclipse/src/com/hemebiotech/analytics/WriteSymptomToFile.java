@@ -1,7 +1,5 @@
 package com.hemebiotech.analytics;
 
-import resources.CanWritable;
-
 import java.io.*;
 import java.io.File;
 import java.util.Map;
@@ -37,33 +35,38 @@ class WriteSymptomToFile implements CanWritable {
      */
 
     //constructor to use this.file2 in another class
-    public WriteSymptomToFile(File file2) {
-        this.file2 = new File(outputFilePath);
+    public WriteSymptomToFile(File file2)
+    {
+        this.file2 = file2;
     }
+
+    /**
+     * This method declares that this.myMap is a map.
+     * It also declares a BufferedWriter.
+     *
+     * <p>The BufferedWriter will write to the outputfile.</p>
+     * <p>The BF is instanatiated with a FileWriter. The
+     * code is wrapped in a try/catch to avoid errors on file.</p>
+     *
+     * The for Loop will set the writing.
+     * <p> For each entry of String & Integer
+     * from the myMap entry set, bf will write
+     * each key and value; line after line.
+     * </p>
+     *
+     * Then the stream is flushed, once the writing is done.
+     * Finally, the stream is closed.
+     *
+     * @param map
+     */
 
     public void WriteDatas(TreeMap<String, Integer> map) {
 
-/**
- * Declaring that this.myMap is a map.
- * For more information on TreeMap,
- * check documentation.*
- */
         //initializing map & declare bufferedWriter which is null
         this.myMap = map;
 
-/**
- * Initializing the BufferedWriter to null for safety.
- * The BufferedWriter will write to the output file.
- */
-
         BufferedWriter bf = null;
 
-/**
- * Intantiation of the BufferedWriter & a FileWriter
- * that will write on this.file2.
- *
- * The code is wrapped in try/catch to check for errors.
- */
         //initializing bufferedwriter to write on this.file2
         try {
             bf = new BufferedWriter(new FileWriter(this.file2));
@@ -71,24 +74,12 @@ class WriteSymptomToFile implements CanWritable {
             e.printStackTrace();
         }
 
-/**
- * This for loop writes on the file.
- * <p> For each entry of String & Integer
- * from the myMap entry set, bf will write
- * each key and value; line after line.
- * </p>
- */
         //for values & keys in myMap, bf must write them as specified, line by line
         try {
             for (Map.Entry<String, Integer> entry : this.myMap.entrySet()) {
                 bf.write(entry.getKey() + ": " + entry.getValue());
                 bf.newLine();
             }
-
-/**
- * This flushes the stream once the writing is done.
- * Finally, close the bf stream.
- */
 
             //flush the stream and close the writer when done
             bf.flush();
