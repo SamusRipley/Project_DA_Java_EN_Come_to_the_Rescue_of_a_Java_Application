@@ -48,8 +48,8 @@ public class AnalyticsCounter {
         symptomReader.readDatas();
 
         //Declare and initialize File2 that will write results as expected
-        File files = new File(propertiesService.getProperty("outputFilePath"));
-        WriteSymptomToFile wstf = new WriteSymptomToFile(files);
+        File file2 = new File(propertiesService.getProperty("outputFilePath"));
+        WriteSymptomToFile wstf = new WriteSymptomToFile(file2);
         wstf.WriteDatas(symptomReader.getMyMap());
     }
 }

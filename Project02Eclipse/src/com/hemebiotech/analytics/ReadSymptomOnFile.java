@@ -12,7 +12,7 @@ class ReadSymptomOnFile implements ICanReadable {
      * <p>It can only be accessed from within this class.</p>
      */
 
-    private File files;
+    private File file;
 
     /**
      * The TreeMap named myMap.
@@ -32,7 +32,7 @@ class ReadSymptomOnFile implements ICanReadable {
      */
 
     public ReadSymptomOnFile(File file) {
-        this.files = file;
+        this.file = file;
     }
 
     /**
@@ -67,7 +67,7 @@ class ReadSymptomOnFile implements ICanReadable {
         //call scanner set to null; create new instance of scanner & catch exception if needs
         Scanner sc = null;
         try {
-            sc = new Scanner(files);
+            sc = new Scanner(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
